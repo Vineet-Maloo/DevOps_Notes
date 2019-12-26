@@ -1,0 +1,23 @@
+DOCKER SWARM
+
+to work in the docker swarm (this is a 3 node cluster, 2 node and one manager)
+
+1. docker swarm init (to initialize docker swarm)
+   once you run this command, we get the outout as 
+    docker swarm join -- token {someting}
+2. docker node ls (to see how many nodes are listed in your manager)
+3. now paste th docker swarm join command (from step 1 ), run this to the worker node you want to join
+4. suppose you have lost the token command, then you can retrive it by the following command
+  docker swarm join-token worker
+5. to add master node - docker swarm join-token manager
+6. How to remove a node from a cluster - docker swarm leave (this command should be run in the node)
+7.  and to remove from the master use this below command - docker node rm -f <worker1>
+8. both 6 and 7 command should be run to leave the node from the cluster.
+9. docker node inspect workerr 1 (run this on master)
+10. docker node promote worker1 worker2 (run this on master to promote the worker as master)
+11. docker node demote worker1 worker2 (run this on mastrer to demote the master to worker)
+12. docker node ls - to see the all the nodes in the cluster, this run only in the master.
+13. watch docker container ls - this will give you the list of docker container every 2 seconds.
+
+
+docker services
