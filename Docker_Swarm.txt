@@ -21,3 +21,4 @@ to work in the docker swarm (this is a 3 node cluster, 2 node and one manager)
 
 
 docker services
+1. 
