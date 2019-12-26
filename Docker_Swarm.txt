@@ -20,5 +20,5 @@ to work in the docker swarm (this is a 3 node cluster, 2 node and one manager)
 13. watch docker container ls - this will give you the list of docker container every 2 seconds.
 
 
-docker services
+docker services:
 1. 
