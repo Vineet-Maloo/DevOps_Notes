@@ -1,0 +1,75 @@
+Maven goals (building the application is called as goals-)
+1. Compile
+2. test
+3. Package (Copying what you build & Pom file to .m2)
+4. deploy
+5. Clean
+
+when you deploy a project in java we will see the files like jar/war/ear
+these are zip files.
+
+how to convert the spring petlinic into jar file this process is called Compile
+
+when we run java files we need to have jar/war files
+
+Compilation - converting the files in some format which is understandable by our OS.
+
+incase of java or .net we need to have jdk install to make the jar file understandable.
+
+After compilation we need to have convert it into package.
+
+Build tools is to compile the java files
+
+maven reley on one file pom.xml
+
+maven can download or resolve dependencies
+
+maven has huge global repository
+
+so in pom.xml we have information about metadeta and dependency of the project.
+
+
+inside your code you have pom.xml.
+where there be pom.xml, there will be a folder called src
+
+inside src 2 more folders
+1. main - it has a folder say java which has java files basically tells which technology you are using 
+2. test -if you have unit test cases
+
+so once you compile the code mvn compile you can see that there is a new target folder gets created in your directory(where your pom file is.)
+
+Inside target there are 2 new folders
+1. class - it contains mymain.class file.
+2. maven status
+
+so if you have 100 files you cannot have so many class file, or that we do mvn package
+
+mvn package
+
+once you do mvn package you can see there is one jar file gets created in target folder which has the name of artifacts which you gives in pom.xml
+artifactory is basically the name of the application which you want to create.
+All the dependiency which will be downloaded will be saved on .m2 folder ->repository
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

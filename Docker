@@ -1,0 +1,199 @@
+Docker
+
+Install Docker
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+
+Add user to the docker
+sudo usermod -aG docker <name>
+
+
+
+
+Base image -- 1. Official image -- suppose a application is based out of Java and Spring, then we will choose the base 
+
+image which already has Java
+2. Published image  - in some case it is not possible, in that case we use Published image -- (Publisghed images
+)
+Then do your deployment
+How can i run my application when container is starting
+
+
+
+Base image -- From
+Deployment  -- RUN
+Start my app
+
+-d is running the deamon- which is like a service which will run in the background.
+ip addr- will give you IP address if your machine. ifconfig
+docker images (to see what all are the images present in our docker)
+inside every container it will have your private ip, processes, storage. (df-h, ip addr, ps)
+Basically it uses the operating system.
+
+docker stats - will show about containers.
+
+what can be run inside containers - Services
+stateless/stateful
+stateful - whenever you are using the local storage it is stateful
+stateless - whenever you are not using local storages it is stateless. Docker works wondrful in stateless application.
+
+image optimisation -
+to cut down the sizes and the memory requirement.
+
+docker ps - will give you the docker process running in your system.
+
+docker ps -a will give you all the containers in your machine.
+
+Namespaces - 
+there are famous namespaces which helps in creating the isolations.
+PID every process is given a unique process id
+USR
+NET
+MOUNT
+
+for your system docker is like a process
+But when you go inside your docket, it will again looks like a host process.
+
+Whenever you are installing docker a group gets created (like in windows we have a group for admins) which is called docker. And the members of the docker group will be able to speak to docker engine.
+
+docker client will be accessable to all.
+
+once you have install docker add your user to docker group which is done by below command
+sudo usermod -aG docker <name>
+
+-d id docker demon, which wil continiously run in the background.
+
+-p (port forwarding)
+docker container run -p 8080:8080 ngnix which is similar to 
+docker container run -p host port: container port ngnix (container port will be fixed, we can change the host port)
+-P (capital P)
+docker container run -P ngnix (this will map to the port which is empty automatically without we assign to them)
+to add the name of the container use the command --name
+example
+docker container run -p 8080:8080 --name 'myngnix' ngnix
+
+remove container rm 
+
+docker is a process to the system.
+
+to go inside the container we can use the below cammand
+
+docker exec -it <container id> /bin/bash
+ctrl+pq to come out of the container
+
+voloume is a persistance docker image
+to add voloume to a container we use docker run container -v /logs:/usr/local/tomcat/logs -P -d tomcat:8
+
+
+
+
+
+
+in CMD what ever we write will execute when the container is startingthe container is alive when CMD is leaving
+
+
+Buid the image from Docker file
+make a directory images -- mkdir images
+go to images -- cd images
+in that images create a directory called as hello-alpine
+go to hello-alpine  -- cd hello-alpine
+in this create a file cvalled as Dockerfile -- vi Dockerfile
+
+:wq- to save the docker image
+
+Now we have a docker file in the directory
+
+Now we need to convert the dockerfile to a image- this is called building the iumage for this we use -- docker build
+-t is used for tags to give some name to your image, tags is the versions of the images
+-f is used to navigate tonthe path (Over here we need the path where my Docker image is saved)
+
+:wq is used to save the file.
+ctrl+o - used to go bottom of the file
+
+
+
+ Command to execute the dockwer file -- ubuntu@ip-172-31-19-41:~/images/first-image$ docker image build -t 'first-image' .
+
+
+Command to remove all the docker container -- container rm -f $(docker container ls -a -q)
+
+
+
+
+
+
+
+
+--
+
+Docker and kubernetees
+
+
+microservices - self excutable part of our application
+ 
+#nanoservices
+
+building a individual smaller application
+
+
+Docker is used to host all the microservices.
+Advantage - portability
+
+capex- capital investiment to host the server
+cost of OS
+opex- cost for ac, admin etc
+
+
+VM Ware used to reuse hardware.
+docker playround
+
+
+
+
+
+---
+services id demon in linux
+
+
+docker hub- registry
+
+docker run -d -p 8080:8080 tomcat
+
+tomcat id image
+
+converting a image into a container
+
+downloading the image to the local machine is called as pull
+
+
+
+INSTALL DOCKER SWARM
+
+1. install docker-machine first
+
+
+3. install VBoxManage
+
+sudo apt-add-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib"
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install virtualbox-5.0 dkms 
+
+After this run this command
+
+sudo apt-get install virtaulbox
+
+
+2. Create a docker machine (to act as a node for docker swarm) create one machine for the manager and other for the container. [Pre-requisite is step 3]
+
+then run this command
+docker-machine create -d virtualbox master (master id the name of the manager)
+
+***you might get the below error.
+
+"This computer doesn't have VT-X/AMD-v enabled. Enabling it in the BIOS is mandatory"
+
+Use the below command
+docker-machine create master --virtualbox-no-vtx-check

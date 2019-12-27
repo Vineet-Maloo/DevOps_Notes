@@ -1,0 +1,239 @@
+Ansible
+
+Create a common users Ansible and give him the sudo users.
+Install Ansible in ACS and also install python
+Install python in node.
+configure passwordless connection between the two ACS and node.
+
+Inventory
+it is the list of nodes (IP address)
+Playbook 
+What has to be done for the deployment using YAML
+
+Playbook
+	Plays
+		tasks
+			modules
+			
+ansible -m ping all (here m is module)
+
+
+
+in ansible there is a module to collect facts called setup
+
+it will give you the ip address of the machine, the os information, etc, would be shown here.
+
+
+whenever you are running a ansible playbook a facts is being created 
+like
+
+ansible@172.0.0.1:~/ansible-playbook -i inventory playbook.yml
+play[all]
+
+task [gather facts]
+ok 172.0.0.2 
+ok 172.0.0.3
+
+basically whenever you are running a playbook, what ansible does is it collect facts by running a module called as setup.
+
+ansible -m setup -a 'filter=*os' all
+here a is the argument passed.
+
+if the files are having a dynamic value, we cannot use copy modules. in that case we use ansible template
+##template is copying the dynamic content, we use jinja content
+
+cat etc/ansible/ansible.cfg
+ansible.cfg - it is the system level configuration of ansible, which you will apply to the every playbook that you run in the system
+
+ANSIBLE VARIABLES
+
+questions from master
+what is the use of ansible in devops pipeline?
+we use ansible to provision our application deployment
+
+who calls ansible in devops journey? (ci/cd)?
+Jenkins
+
+what is a module in ansible?
+module is the smallest unit of work in ansible who tells what has to be done.
+
+how does ansible work?
+we have python to connect to all the nodes, ansible tells python to do the tasks accourding to playbook.
+
+JINJA2
+says that we need to call the variable just using {{}} syntax. 
+in jinja to put the dynamic value we use {{}} whenever we are having sting value.
+
+jinja also gives us some functions.
+
+
+to copy the files from one machine to other we use:
+
+copy: module uses to copy files from local to remote 
+
+
+template :
+module uses to copy dynamic files from local to remote 
+
+get_url 
+ 
+get_url:
+      url: www.s3bucket.aws.amazon       
+      dest: ~/home/ansible
+
+in a devops pipeline, once you have buid the code using Maven, we would call Ansible and then we will install tomcat in the nodes, and copy the application file (.war) in the path /var/lib/tomcat8 inside that there is a golder webapp, we need to copy our application file in this location.
+
+
+variables can be defined at multiple places
+1. in playbooks
+2. in inventory files
+3. 
+
+wherever you have created a ansible inventory files create 2 folders there. a. group_vars, b. hosts_vars
+inside the group_vars folder create a file with the name of the group and define the variable inside the group. same with host variable, create a name with the name of hosts and define your variable there.
+
+
+
+(while running the ansible playbook.)-e is having the higest priority of the variables, Among all the variables that are defined
+
+
+
+there are many people who has done many work in Ansible, we can use there work, which is resuable.
+
+include playbook and import playbook - google it.
+
+Ansible Galaxy.
+In ansible galaxy there is many ansible created.
+this resuable asset is called as roles
+in ansible galaxy we find ansible roles which is written by others.
+gearling guy is famous in ansible world.
+
+ansible 2.8 is the latest version.
+
+How to use roles?
+
+- hosts:all
+- roles: 
+  - role:gearlingguy.mysql
+    become:yes
+
+over here instead of using tasks we use roles.
+role is nothing but a ansible playbook written in very efficient way.
+
+HOw to use roles.
+
+go to ansible galaxy website, and then search for anything which you want to install say tomcat.
+
+Now select the roles written by others and see the readme file/examples and the variable used in the playbook.
+
+and then try using the same in your linux box.
+
+in linux box, before using the anible roles, you need to install ansible galaxy in your boxes.
+example: ansible-galaxy install zaxos.tomcat-ansible-role (it will download it from ansible galaxy)
+
+Any ansible roles which you download will be stored at home/ansible/roles
+
+
+---
+Creating Ansible roles
+1. ansible-galaxy init rolename{say basic structure}
+once you do ansible-galaxy init some folders gets created like {defaults,handlers,meta,tasks,tests,vars, Readme.md}
+
+so we would write the handlers in the folder handler, similarly variables should be in vars folder.
+All these respective folders will have files mail.yaml to define tasks, vars etc
+
+Now create a folder 
+Ansible roles always start with directory structure.
+
+role is like a library which will be called by playbook.
+
+whenever you will write a role, it will check for a three places.
+1. /etc/ansible/role in this location it will search for 
+2. in your home folder, home/ansible/roles
+3. wherever you have your playbook whether there is a folder called as roles and inside roles it has a folder with your rolenames mentioned in your playbooks.
+
+molecules is used to validate the tasks without using the playbook.
+
+
+include tasks
+
+exceptions:
+ansible module shell (this is not idempotent)
+This module is to run the shell script.
+- hosts:all
+  become:yes
+  tasks:
+   - name: executing shell script
+     shell: /home/ansible/script.shell
+	 
+Now this script is not idempotent, so we need to make it idempotent. we can do this using handlers
+
+- hosts:all
+  become:yes
+  tasks:
+  - name: something
+    file:
+	 path: /home/ansible/myinstall.php
+	notify: 
+	 executing shell script
+	 
+  handler:   
+  - name: executing shell script
+    shell: /home/ansible/script.shell
+
+How can you	run your script faster?
+you can use gather_facts = no in ansible playbooks.
+
+Parallalism or fork.
+Ansible can excecute in 5 machines in parallel. so if you want to run in 20 machines at a time we can use fork -f
+
+ansible-playbook -i inventory -f 20 playbook.yml
+
+Ansible vault
+used to encrypt the datas. 
+basically used to store the passwords, etc
+How to use it?
+ansible-vault create vault.yml
+it will ask for the passwords.
+
+ansible-vault encrypt vault.yml
+
+ansible-vault decrypt vault.yml
+
+
+Ansible use cases
+
+day builds - the builds which is build during day. 
+
+
+
+
+
+	
+	 
+
+	 
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			

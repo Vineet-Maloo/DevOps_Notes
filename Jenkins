@@ -1,0 +1,86 @@
+Jenkins
+
+to find the users in the mchine userssudo cat /etc/passwd
+var/lib/jenkins is the home for jenkins
+visudo to give sudo permissions
+
+
+
+Jobs will contains the name of the jobs. 
+jobs folder will be inside the jenkins home directory
+workspace - where the downloads will be saved
+
+to enable passwordbased communication we use
+vi /etc/ssh/sshd_config ssh -i 
+
+
+
+pipelines
+
+1. scripted Jenkins build and deployment process written in Groovy (Jenkins DSL)
+2. Groovy (Java based language)
+3. This can be version controlled and it is not necessary for script to be on Jenkins. It can be in VCS
+4. DSL - Domain specific Languages.
+
+# Components of pipelines
+1. Node - this is jenkins node where you want your job to run
+
+eg.
+
+node(Ubuntu)
+{
+}# run the jenkins node with label ubuntu
+
+2. inside the node we have STAGE. Build process can be logically divided into stage.
+
+eg.
+
+node('Ubuntu')
+{
+	stage('git')
+	{
+	#steps to downloaed from git 
+	}
+	stage ('package')
+	{
+	#steps to build and package
+	}
+}
+
+
+#upstream and downstream
+
+Run Project A first and then B
+
+then A is upstream and B is downstream
+
+Scenerios
+
+1. A->B (in this case we can either configure upstream and downstream)
+2. A->B (in this case we configure downstream projects
+	->C
+	
+#Parameterised pipelines
+there are two types of variables	
+a. Enviromentals - which Jenkins will define. it has step function in groovy
+b. Parameters - which we will define
+
+#Bookmark - for step function very important. https://jenkins.io/doc/pipeline/steps/
+
+here node and stage are blocks and steps is <steps>
+node{
+stage{
+<steps>
+}
+}
+
+
+Jenkins API Integration
+1. Git hook - is an event raised after some git activities
+there are two types of hook which are popular
+a. client side hooks - it runs on everywhere you clone (events on your local repo)
+b. Server side hooks - it runs on after you push your code(events on your server repo)
+these hooks are basically scripts
+
+in .git folder there will a folder hooks
+

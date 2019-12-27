@@ -1,0 +1,191 @@
+
+
+git cheat sheet
+
+*git can detect only files not folders. it will detect a changes in the file not the folder.*
+
+staging area is an area which will help to commit the changes
+
+
+Working area -----> Staging Area-------->Local Repository
+
+	     add		commit       |^
+					pull || push 
+					     ||
+					     v|
+
+					Remote repository
+
+                      
+
+
+
+
+
+
+Change set - All the changes you have done to start coding.
+
+
+
+git init - used to convert a folder(say x) into a git repositry. it will create a folder (.git) inside the folder(x)
+
+git status - it will identify all the changes you have done in the folder. 
+
+----
+
+To do the commit, we need to execute the below two commands to tell git who you are. if you will not do this then git will not allow you to commit changes.
+git config --global user.name qtdevops
+git config --global user.email qtdevops@gmail.com
+----
+
+for every commit we have to write some message for that we need to add a message we use -m
+
+example git commit -m "first change"
+
+git will consider the below things while commiting
+time
+message
+your details
+
+to see the history - git log
+
+
+
+In git we are doing phased commits (because we are moving our changes from one phase to another)
+
+
+
+
+reset- when you add some changes to staging area and you want to bring it back (if you dont want that operation). this is called reset
+
+We use git reset - it will go in working area again
+we use git --hard - it will also remove from working area
+
+git --hard - it will not remove the changes from the untracked file.
+
+git clean -fd - it will remove the changes from the untracked file.
+
+git rm - it will remove the files from working and send it to staging
+
+
+----
+dealing with multiple file
+
+git add --all - it will add all the files to staging area in one shot.
+
+git add . - it will add changes to all the files in that particular direcotory, including the sub folders.
+
+git add -u - it will add the changes to all the trackd files, but not the untracked files.
+
+
+------------------------
+
+remote repoiotry
+
+git server (remote repository)examples - github, bitbucket (atlasian),
+
+
+https, ssh - it will allow you to communicate to remote repository.
+
+default name given to a remote repository is "origin"
+
+git remote add origin http://github ...(your remote repo link)
+
+clone is getting the remote repository in your local (basically trying to download the code for the first time.)
+
+master branch - by default whatever you are working on (commits), is always a branch.
+
+whenever you are doing init a default branch master is created.
+
+master always looks at the latest commit.
+
+-------------------
+
+to create a branch we use git branch <branch name> (say rel.1)
+
+then git checkout branch name (rel.1)
+
+
+git branch --command will the list of branches in local repository.
+
+git branch -r -- is the branches in remote repository.
+git branch -a -- will show you all the branch in local and remote repositories.
+
+to go to new branch use checkout commands.
+
+git push <remote repository name> < branch name>
+example git push otigin rel.1
+
+
+fetch - remote branch changes.
+merge - changes you have made into the remote repository have to be go to local
+
+pull - combination of fetch and merge commands. (Basically it will fetch the changes in the remote branch and it will merge in the local repo.)
+
+--------------------
+
+SHA-1 Hash of
+1. changeset
+2. Author
+3. Datetime
+4. messages
+
+git checkout -b <new branch name>
+
+
+merge - whenever you  want to bring all  the change of one branch to another, we have to use merge.
+
+ you have to be at destination
+ gir merge <where you need to merge (branch)>
+
+git rebase - changing history
+
+
+
+git cherry-pich range
+
+
+topics to be covered along Maven
+
+1. ignorning folders or files
+2. stash
+3. git bare repositories
+4. branching stratcagy
+5. code commit
+6. Azure sorce repositories
+
+# adding the existing repository to your repository
+git branch -range
+git remote add newremoteserver<anyname> master
+
+
+
+git stash
+this is the fifth area of git, where it will store the files temporarly in yout .git folder.
+Why we use this is because suppose you are working on something and suddenly your manager comes and ask to do something more important, then to store your changes temporarly we use 'git stash' command.
+it will store your all the changes in the .git folder.
+you can see the list of changes in that are in your stash by this command 'git stash --list'
+
+And then when you start working on your project again, you can use 'git stash apply' or 'git stash pop'
+the difference between git apply and git pop is git apply will recover all the changes you have saved and it wil remove it from the list, where as git pop will recover the changes but it will not remove it from the list.
+
+there is another folder called as git ignore.
+why we use this is because when we are pushing the code to the repositories we do not want some particular files of folder to be included in the git repository. Let us say we do not want the target folder or the deploy folder (which gets created while you build the code), for this we use .git ignore file, which has the list of files or the folder that needs to be ignored.
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
