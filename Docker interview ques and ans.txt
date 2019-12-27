@@ -1,0 +1,88 @@
+Docker interview questions
+
+1. Why docker 
+A Docker is a containerization platform which packages your application and all its dependencies together in the form of containers so as to ensure that your application works seamlessly in any environment, be it development, test or production. Docker containers, wrap a piece of software in a complete filesystem that contains everything needed to run: code, runtime, system tools, system libraries, etc. It wraps basically anything that can be installed on a server. This guarantees that the software will always run the same, regardless of its environment.
+
+2. Difference between virtualizations and contanierisation
+A Containers provide an isolated environment for running the application. The entire user space is explicitly dedicated to the application. Any changes made inside the container is never reflected on the host or even other containers running on the same host. Containers are an abstraction of the application layer. Each container is a different application.
+Whereas in Virtualization, hypervisors provide an entire virtual machine to the guest(including Kernal). Virtual machines are an abstraction of the hardware layer. Each VM is a physical machine.
+
+3. How will you find the running container in your system
+A docker container ls
+
+4. How will you find running as well as non running continer in your system?
+A docker container ls -a - this will show you all the container both running and non running in your system.
+
+5. How to delete all the unused images?
+A docker image prune - this will remove all the unused images 
+
+6. Where you will store the docker images and why?
+A in your host machine you can go to the below path  /var/lib/docker/graph/<id>
+
+7. Can we change docker file name?
+A
+
+8. How many docker files have you created and explain its purpose?
+A
+
+9.How can you transfer the running container to your friend?
+A It is quite possible. Pause current container, export image with docker export container_id -o my_container.tar (this is possible with paused instance) to a TAR-file. , copy the file, import it with docker import containerid -o my_container.tar then just start a new container with docker run on new machine. You can get container id with docker ps.
+
+10. How will you create a image out of a running container?
+A docker commit <container id>
+
+11. How will you check your OS version once you start your container from your image?
+A
+
+12. what all images have you created?
+A
+
+13. how to pass argument in the docker file?
+A You can define variables inside of a Dockerfile, to help you not to repeat yourself.
+
+(Dockerfile:)
+
+ARG some_variable_name
+# or with a default:
+#ARG some_variable_name=default_value
+
+14. what are the basic differneces between run and CMD?
+A RUN is an image build step, the state of the container after a RUN command will be committed to the container image. A Dockerfile can have many RUN steps that layer on top of one another to build the image.
+CMD is the command the container executes by default when you launch the built image. A Dockerfile can only have one CMD. The CMD can be overridden when starting a container with docker run $image $other_command.
+RUN - Install Python , your container now has python burnt into its image
+CMD - python hello.py , run your favourite script
+ENTRYPOINT is also closely related to CMD and can modify the way a container starts an image.
+
+15. what is the entry point and why do you use it?
+A The ENTRYPOINT specifies a command that will always be executed when the container starts.
+The CMD specifies arguments that will be fed to the ENTRYPOINT.
+If you want to make an image dedicated to a specific command you will use ENTRYPOINT ["/path/dedicated_command"]
+
+16. How to run Jenkins container?
+A docker run --name jenkins -p 8080:8080 -v /var/jenkins_home ticketfly/jenkins-example-gradle-build
+When running this single command, it executes multiple different steps:
+Download the image called ticketfly/jenkins-example-gradle-build from dockerhub.
+Create a Docker volume inside the container at /var/jenkins_home (the Jenkins home directory)
+Run Jenkins on port 8080 (as set by the parameter -p)
+The Jenkins image comes with a build called an-example-of-github-project. The file is stored as an XML file in the image.
+When starting Jenkins, the build is executed. It clones a github repo and builds the project.
+
+17.what do you understand by port mapping and where have you used it?
+A docker container run -p 80:8080 (hostport:container port) nginx
+
+18. How to assign volumns to the container?
+A docker container run -d -v "/data" awesome/app bootstrap.sh (we can also use mount flag)
+
+19. wtrite docker pull, tag and push command?
+A $ docker push registry-host:5000/myadmin/rhel-httpd
+
+20. How will you login to the docker hub?
+A
+
+21 how to login automatically to the docker hub via shell script?
+A docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: nkershaw@impinj.com
+Password: 
+
+

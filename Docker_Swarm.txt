@@ -32,4 +32,16 @@ Basically we are trying to say to docker orcastator that we need this service in
 8. ** Even in your node container when there is no container running, but when you try to access the application from that particular IP address of the node which is mapped to the port in the cluster, the application will work. This is because the port mapping is done to all the node in that particular cluster, so if you want to access tha applcation from any nodes in that particular port where your applcaiton is running , you will be seeing the applcation running.
 9. Swarm Visualizer
 10. if there is a requirement that if you have 10 nodes and you want your service to run in all the 10 nodes then we use -- docker service create mode=global ping 9.9.9.9. So even though if you create another node, your service will automatically run in that new node.
+11. if you want to run the services on the master only then we use the following command - docker service create --replicas=3 --constrant ="node.role=manager" alping ping 10.0.0.1 (this can be run in the master)
+12. if you want to run the above command from the master node, then we use docker service create --replicas=3 --constrant ="engine.labels.name=gaurav"-d alpine ping 10.0.0.1
+13. Availability of the node. if the availability state of the node is Active then it means that your node is ready to take the work from your manager. if the availability state is pause then it means that there are many containers running and cannot take any more task (we use it for debug). If the availability state is drain when we need to transfer the container to the other host then we use drain
+14. docker node update --availability =pause worker2
+15. docker node update --availability -drain worker2, this command will move all the working containers from worker 2 to other hosts.
+16. docker secret create <name of secret> -  then enter the password you will get a secret key
+you can check this by -- docker secret ls
+
+
+Docker overlay hosting
+ingress network is a type of overlay network which has inbuild loadbalancer
+
 
