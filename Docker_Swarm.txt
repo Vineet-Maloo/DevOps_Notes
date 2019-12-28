@@ -6,7 +6,7 @@ to work in the docker swarm (this is a 3 node cluster, 2 node and one manager)
    once you run this command, we get the outout as 
     docker swarm join -- token {someting}
 2. docker node ls (to see how many nodes are listed in your manager)
-3. now paste th docker swarm join command (from step 1 ), run this to the worker node you want to join
+3. now paste the docker swarm join command (from step 1 ), run this to the worker node you want to join
 4. suppose you have lost the token command, then you can retrive it by the following command
   docker swarm join-token worker
 5. to add master node - docker swarm join-token manager

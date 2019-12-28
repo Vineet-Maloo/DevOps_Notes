@@ -91,7 +91,7 @@ to add voloume to a container we use docker run container -v /logs:/usr/local/to
 
 
 
-in CMD what ever we write will execute when the container is startingthe container is alive when CMD is leaving
+in CMD what ever we write will execute when the container is starting the container is alive when CMD is leaving
 
 
 Buid the image from Docker file

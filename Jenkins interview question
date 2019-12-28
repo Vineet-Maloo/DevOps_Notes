@@ -1,0 +1,6 @@
+1. where is the link stored, where can pass the crendiential for a global repository so that the jenkins jobs will directly pick that?
+2. For connecting a git repository you provide the crendientials inside the Jenkins configurations and now if you wnat to override it at particular job, can we do that?
+3. you have two repository say SCM and git you need take the code from both the repository and do the compilation create a  build ,so only single build is created. Can you achive that?
+4. 
+
+
