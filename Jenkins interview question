@@ -1,6 +1,36 @@
-1. where is the link stored, where can pass the crendiential for a global repository so that the jenkins jobs will directly pick that?
-2. For connecting a git repository you provide the crendientials inside the Jenkins configurations and now if you wnat to override it at particular job, can we do that?
-3. you have two repository say SCM and git you need take the code from both the repository and do the compilation create a  build ,so only single build is created. Can you achive that?
-4. 
+1. What is Jenkins?
+2. what versions of Jenkins you are using?
+3. What are your resposiblities in git, Jenkins
+A. GIT
+   1. Enable branching strategies live dev, qa, preprod and preprod
+   2. Managing git repositories using various git commands like pull push merge clone branch rebase etc
+   3. Managing git user access like giving access to specific repositories, specific branches 
+   Jenkins
+   1. Jenkins we are using to create our CI/CD jobs
+   2. Master slave configurations
+   3. Managing CI/CD jobs
+   4. Managing Jenkins Pulgins
+   5. Integrating other DevOps tools like git, Maven, Ansible,etc
+   Ansible
+   1. Setting up the access
+   2. Writing Playbooks and roles
+   3. Managing Ansible hosts
+   Docker
+   1. Setup Docker environment
+   2. Writing Dockerfiles
+   3. Creating custom images
+   4. Setting up private Docker registry
+   5. creating and managing container 
+
+ grep and grep-i (case insensitive)  , grep ril recurssive - case insensituve and l to print file name, grep <text> * to search in multiple files, grep -w (to search exact text), grep -v(which does not match the pattern)
+
+ sort -n for numeric
+ for gbs -h
+
+ gzip
+ unzip
+ tar-cvzf(filename.tar.gz) filename
+
+
 
 
