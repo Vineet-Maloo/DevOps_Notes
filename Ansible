@@ -81,7 +81,7 @@ get_url:
       url: www.s3bucket.aws.amazon       
       dest: ~/home/ansible
 
-in a devops pipeline, once you have buid the code using Maven, we would call Ansible and then we will install tomcat in the nodes, and copy the application file (.war) in the path /var/lib/tomcat8 inside that there is a golder webapp, we need to copy our application file in this location.
+in a devops pipeline,Z
 
 
 variables can be defined at multiple places

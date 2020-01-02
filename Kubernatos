@@ -1,0 +1,159 @@
+Master server is responsible to ensure that the things are working on the other machines
+
+All the individual machine where you actually perform your work is called as nodes.
+
+So throughout the kubernetos we see this terminology master and nodes.
+
+This is not aactually distributed system because in distributed system anybody can become a master.
+This is basically a cluster type of system, because even tought we have 3 mchines or 300 machines it speaks to only one system - master.
+We gnerally dont speak to nodes, we speak to the master who will get the things done.
+We intract with only master.
+
+In Kubernetos we call it master and in docker we call it swarn
+
+Generally we speak about state over here, which means we will not say to the master how the things have to be done we will only say what we need.
+
+We will not say to master to create a command using this command, we will say we need one tomcat cotainer.
+
+State means we will specify what we want, not how we want, we will leave how to master.
+
+What we are going to do
+
+1. how to create cluster
+2. how do i mention state
+3. wat are the possible state which i can mention
+
+
+Kubernatos
+
+## Installation
+ we can install kubernatos cluster in many ways
+
+1. Bare mettle - its complicated
+2. Sandbox -- minikube (Test kubernatos)
+2. Simplified - 
+3. Turnkey solution - you purchase and every thing will be preinstall
+4. Cloud solution - Azure AKS, Amazon EKS
+
+
+Whenever we are going multimacine architecture there is 2 kinds of architecture
+1. Client - server architecture Master slave
+2. Distributive- we dont have client and server, anyone can be master and anyone can be slave.
+
+
+
+Pets Vs Cattle
+
+Masters Major component.
+1. Api Servers
+2. Clustor store (KV)
+3. Controllers
+4. Scheduller
+
+We Communication through Master through API servers (Rest API)
+
+
+Clustor store
+Whatever is happening in kubernatos it will store in clustor store.It is memory of Kubernetos
+uses etcd (Software)
+
+Controller
+This is responsible for maintaining the state.
+
+Scheduller
+responsible to find the best node to create your container.
+
+
+
+
+
+
+
+
+key value store is etcd
+everything which is being stored in kubernetos is in key value store
+
+ 
+Rest API is a simple services which expose http(S),to communicate
+
+Node has three component.
+1. Kubelet- it does the action what master has asked it.It takes the command from master and it will execute.it will not ask anything
+2. Kube Proxy - all about the networking and IP address. It gives every pods an IP address
+3. container engineer- docker
+
+Total 7 compoent - 4 on master and 3 on Node.
+
+In Kubernetes we have pods. like docker has container. Basically Pods has a container. it is not a container
+
+Ideally each pod should have one contianer. It is a small layer above the docker container.
+
+Why we use this is because, kubernetes is not designed specifically for docker container.
+
+In Kubernetas we give Ip to pods not to the container. We give storage space to pods ot to the container.
+
+Pods can have only one IP address. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Masters Major component.
+1. Api Servers
+2. Clustor store (KV)
+3. Controllers
+4. Scheduller
+
+We Communication through Master through API servers (Rest API)
+
+
+Clustor store
+Whatever is happening in kubernatos it will store in clustor store.
+uses etcd (Software)
+
+Controller
+This is responsible for maintaining the state.
+
+Scheduller
+responsible to find the best node to create your container.
+
+
+
+
+Node has 3 components
+1. Kubelets - is an agents which will take commands from master and execute the order. It will not make any decissions. It will simply take orders from master and executes it. Also notify the status back to master
+2. Kubeproxy - All about networking and service discovery.
+3. Engine - it is a docker installation (container engineer)
+
+
+
+Pods - it is a smallest unit of kubernetes. Pod has a containers. it can have a multiple container, which is not recomended.
+In Kubernetes we will give IP address to Pods not to a container. 
+
+
+
+
+Installing Kubernetos
+
+Installing kubernatos using Kubeadmin
+
+Installing Pod network using Fannel, this is important to give network to your kubernatos
+
+kubectl get pods -A
+
+
+
+
+
+
+
+
