@@ -55,8 +55,11 @@ All the dependiency which will be downloaded will be saved on .m2 folder ->repos
 
 
 
-
-
+mvn archetyp:generate - this will generate a directory structure of maven project
+groupid website in reverse order
+artifact id project name
+version 1.1
+package - jar war
 
 
 

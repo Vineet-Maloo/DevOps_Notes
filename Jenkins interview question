@@ -22,6 +22,21 @@ A. GIT
    4. Setting up private Docker registry
    5. creating and managing container 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------
  grep and grep-i (case insensitive)  , grep ril recurssive - case insensituve and l to print file name, grep <text> * to search in multiple files, grep -w (to search exact text), grep -v(which does not match the pattern)
 
  sort -n for numeric
@@ -30,6 +45,63 @@ A. GIT
  gzip
  unzip
  tar-cvzf(filename.tar.gz) filename
+
+	export GIT_SSL_NO_VERIFY=1
+    git config --global http.proxy http://10.8.0.1:8080
+
+
+
+Jenkins role
+How to create users, manage and assign roles
+ go to manage jenkins -- manage users-- create users
+ create 3 users one for developer, tester and admin
+ so inorder to restrict the above users based on their roles for that we need a plugin - role-based Authorization, 
+ once you install and restart Jenkins, you can go to global security you can see one option role based strategy
+ once you select and save it, the ablove users will not be able to login to Jenkins
+ Now you need to go manage and assign roles, so under global roles we can select the read level previlages and under project related roles we can select the role to add (say Developer) and pattern (Dev* -i.e., the project which are starting woth Dev will get the access) and then we can select the access required
+ Now we need to assign some users for this roles which we have created
+ and now we can add under the assign roles and add the users which we have created also we need to add the item roles and select whether the user is Developer or tester
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    AWS DevOps KT
+
+In terms of ECS environments look like
+we have 3 environment for data fabric
+1. Dev
+2. Non Prod
+3. Prod
+
+Each environment is have two clusters. 
+1. df-nonprod-ops-cluster - this run the traefik service (Traefik is an layer that sits in between the Kong and the services. Why it is there is because it keeps an inventory of the services and the tasks). it is a service discovery mess. it keeps its full attempt to AWS API.It ask ecs cluster where the docker container is running what port it is running. What is the service name the it belongs to and how to reach it so that i can send the request to that IP or that port. So that is running a separate cluster. So it is a cluster to cluster communication.
+There is only one service running in this cluster - stage-com-data-fabrics-ops-traefik-http
+
+2. df-nonprod-cluster - We have over 200 service running here. the naming convention is it starts with stage. followed by lr/cr/ld/cd -(ladbrokes retail,digital, coral retail, digital). we also have gvc this is generic
+
+
+
+
+if we go to bitbucket and login to any service (say customer login), we can see the file manifest.jason. this specifies the name container details, memory reservations, cpu , port {tpye="lrs" means long running service} and some more details.
+
+this basically means that each task in the specific service needs to have a dedicated memory of 1024 MB, 256 units of CPU.
+Ans it would br listening to the port 8080. this means this is the container port. it is not the host port (basically ec2 machine server is the host and the container port will map to the ec2 port.)
+
+
+
+
+
+
 
 
 
