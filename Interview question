@@ -1,0 +1,64 @@
+    GIT
+what is the difference between distributed and Version control system
+what is git stash?
+what is git conflict?
+How will you resolve your conflict?
+how will you find that which particular line conflict is coming?
+what will be your git merge command form integration branch to master?
+    First you need to checkout to master file and then you need to give command git-merge integration
+
+How will you delete the branch post merger
+    git branch -d <branch name>
+what do you understand by branching?
+    we are using braches for isolation of the environment.
+what are branching strategies you have worked on?
+    develop - integration or release branch(build will happen here) - UAT - preprod-preprod   
+    feature branch is a helping branch or the hotfix branch, when there will be the instance requirement
+how will you find java process running in your server say in tomcat?
+    ps-ef|grep java
+    df -h is used to find the disk free usage in your system
+    top - will give you the cpu process running inyour system     
+how will you find memory in your system
+    free -g (-g in giga bytes)
+what is the first line in any shell script
+    #!bin/bash or bin/sh - this means that your execuatable is present in bash file or sh file
+Why we use Ansible? what are the requirement of Ansible?
+    it is a configuration tool/or deployment of your application.
+Difference between Terraform and Ansible
+    Terraform is used to provision of your infrastructure where as Ansible is configuration management tool
+on what mechanism Ansible works
+    push
+what do you understand by Agentless in Ansible
+    it means no extra software in the remote server. Everything can be done by the control server.
+what are the pre-requisite for Ansible
+    ACS- should have python 2.6 or 2.7 or higher and ansible install and control node shoud have python 3.5 or higher 
+what is set-facts in ansible
+how will you check your syntaes in ansible
+how will you find container running in your system
+    docker container -ps
+how to find the running container in your system
+    docker container ps -a
+how to remove the image in your docker
+    docker image rm-i <image name>                               
+how you will automate database creation script?
+    use Ansible modules to automate 
+what all the modules you worked on?
+    apt, template, package, copy, get_url
+what all the prerequisite have you taken care? how you will check whether tomcat is already present in the server
+    we use when module to check if tomcat is present in the node in the path /var/lib/tomcat
+have you created in jinja templateing?
+
+have you work on handlers
+have you work in line in file or block in file module
+i want to install n number of software, how will you write the playbooks.
+have you worked on fetch module
+do you know task prioritisation? how will you make the two task work in parallel
+where you run your playbooks?
+what is extra variables in ansible?
+what do you understand by Jenkins
+    jenkins is a continious integration tool designed to build your source code. it is installed in the central server where the central build takes place.
+which version of jenkins you have worked on?
+i want to move dev to other environmentin jenkins
+How to take backup of jenkins
+on what kind of jobs you have worked on?
+workflow of the pipeline jobs

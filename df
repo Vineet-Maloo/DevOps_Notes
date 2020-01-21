@@ -1,0 +1,60 @@
+[33mcommit d0c3fa6ad85f996f31992e0e702a6d505d391b80[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 9210175 024c2d1
+Author: unknown <vineetmaloo2007@gmail.com>
+Date:   Thu Jan 2 23:14:53 2020 +0530
+
+    Merge https://github.com/Vineet-Maloo/DevOps_Notes
+
+[33mcommit 9210175ebd5f774d78e243f8626ecb85f5158396[m
+Author: unknown <vineetmaloo2007@gmail.com>
+Date:   Thu Jan 2 23:13:22 2020 +0530
+
+    kubernatos added
+
+[33mcommit 024c2d1c446ae56dc87052798d360b2eb444ec0d[m
+Author: Vineet Maloo <vineetmaloo2007@gmail.com>
+Date:   Tue Dec 31 07:50:36 2019 +0000
+
+    adding some interview question to Jenkins file
+
+[33mcommit 6cfcfe4bd29f26a850efdde4646aca3e48e97d22[m
+Author: Vineet Maloo <vineetmaloo2007@gmail.com>
+Date:   Sat Dec 28 08:28:55 2019 +0000
+
+    new changes
+
+[33mcommit c6f8267f61d7fbfecb7a2ec3474ead525b039203[m
+Author: unknown <vineetmaloo2007@gmail.com>
+Date:   Fri Dec 27 23:27:46 2019 +0530
+
+    adding new files
+
+[33mcommit 213ae0c0eccf1a54dc61dba08c32e9999e96147f[m
+Author: Vineet Maloo <vineetmaloo2007@gmail.com>
+Date:   Fri Dec 27 08:22:17 2019 +0000
+
+    added Docker interview questions and iupdated Docker swarm
+
+[33mcommit 18c647fa38d8c460dd7fe12589a82ccdccf85dd2[m
+Author: Vineet Maloo <vineetmaloo2007@gmail.com>
+Date:   Thu Dec 26 07:48:21 2019 +0000
+
+    updated
+
+[33mcommit 68c6f548c6980ad2e47060e761b11d1d36515c36[m
+Author: Vineet Maloo <vineetmaloo2007@gmail.com>
+Date:   Thu Dec 26 05:35:28 2019 +0000
+
+    this is now file of Docker Swarm
+
+[33mcommit a2fe18b4432a3587078d6262119aa90d1abcea80[m
+Author: Vineet Maloo <vineetmaloo2007@gmail.com>
+Date:   Thu Dec 26 05:31:56 2019 +0000
+
+    dockerswarm
+
+[33mcommit 1b7be7e51d0f6d9d3573e782cff04f5e0e059c43[m
+Author: Vineet Maloo <vmaloo@icepor.com>
+Date:   Thu Dec 26 05:10:45 2019 +0000
+
+    Docker Swarm 4 classes
