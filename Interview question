@@ -4,6 +4,7 @@ what is git stash?
 what is git conflict?
 How will you resolve your conflict?
 how will you find that which particular line conflict is coming?
+ git diff --check
 what will be your git merge command form integration branch to master?
     First you need to checkout to master file and then you need to give command git-merge integration
 
@@ -62,3 +63,38 @@ i want to move dev to other environmentin jenkins
 How to take backup of jenkins
 on what kind of jobs you have worked on?
 workflow of the pipeline jobs
+
+
+**
+Copying shapsnot from one region to another in AWS
+
+
+-------------
+Notes on usergroup access
+
+
+sudo chown root:root <filename>
+		   owner:group
+
+
+
+user  group others
+r w x r w x r w x 777        421
+4 2 1 4 2 1 4 2 1                  400
+
+400 400 4
+
+r-- r-- r--
+rw- rw- 
+drwx rwx rwx
+
+
+400 400 400 
+
+chmod 555 
+r-x
+
+only to groups
+
+---777---
+

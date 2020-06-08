@@ -63,7 +63,7 @@ docker client will be accessable to all.
 once you have install docker add your user to docker group which is done by below command
 sudo usermod -aG docker <name>
 
--d id docker demon, which wil continiously run in the background.
+-d id docker demon, which will continiously run in the background.
 
 -p (port forwarding)
 docker container run -p 8080:8080 ngnix which is similar to 
@@ -85,11 +85,6 @@ ctrl+pq to come out of the container
 
 voloume is a persistance docker image
 to add voloume to a container we use docker run container -v /logs:/usr/local/tomcat/logs -P -d tomcat:8
-
-
-
-
-
 
 in CMD what ever we write will execute when the container is starting the container is alive when CMD is leaving
 
@@ -166,7 +161,6 @@ tomcat id image
 converting a image into a container
 
 downloading the image to the local machine is called as pull
-
 
 
 INSTALL DOCKER SWARM

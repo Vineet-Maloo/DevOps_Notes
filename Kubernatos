@@ -94,6 +94,11 @@ In Kubernetas we give Ip to pods not to the container. We give storage space to 
 Pods can have only one IP address. 
 
 
+Types of deployment
+1. recreate
+2. rolling update
+
+
 
 
 
@@ -149,6 +154,74 @@ Installing kubernatos using Kubeadmin
 Installing Pod network using Fannel, this is important to give network to your kubernatos
 
 kubectl get pods -A
+
+
+
+
+
+
+
+
+
+
+Interview questions of Kubernetes
+Q. what happens if the master node fails and what happens if the worker node fails?
+
+A. When the master node fails the cluster still remains in an operational mode. it does not affect pod
+when a worker node fails master stop recieving an updates from the worker node
+
+Q. What are the service roles in kubernetes
+A. Service is an abstraction of pods. It provides an virtual IP address. It allows client to connect to the containers running in a pod, using virtual IP
+
+Q. How do i rollback a deployment.
+A. Applying changes to the deployment process with a --record flag and then kubernetes saves the previous deployment activities in its history.
+
+to display all the previous deployments.
+kubectl rollout history deployment <deployment name>
+
+to restore last deployment
+kubectl rollout undo deployment <deployment name>
+
+Q. What is a ingress Controller
+A. An ingress controller is a pod that can act as a inbound traffic handler. Prominent features are HTTP path and service based routing and SSL termination
+
+Q. What are the different ways to provide the API security on kubernetes?
+A. there are 8 ways.
+    - Ensure all traffic is protected by TLS
+    - Use API authentication (Smaller cluster may use certificate but larger multi-tenant may use AD )
+    - Webhook
+    - Monitor RBAC failure
+    - Remove default service account permission
+    - Filter egress to cloud API
+    - use podsecurity policyto have container restriction and protech the node.
+    - keep kube at the latest version
+
+Q. How do you package your kubernetes application?
+A. 
+
+Q. what is a difference between a config map and secret?
+A. A config map ideally store the application config in a plain text.
+   a secret stores a sensitive data like password in a encrypted format.
+
+Q. If a node is tainted, is there a way to schedule a pod to that node?
+A. When a node is tainted the pods dont get scheduled by default. TO schedule a pod to a tainted nodeapply tolerations to the pods
+
+Q. How to monitor a pod is always running?
+A. A liveness probe always check if an application is a pod is running. If this check fails the container gets started.
+
+Q. Hot to drain a traffic from a pod during maintenence?
+
+A. kubectl drain <nodename> - to drain 
+   kubectl uncordon <nodename> - to bring back 
+
+   
+
+
+
+
+
+
+
 
 
 

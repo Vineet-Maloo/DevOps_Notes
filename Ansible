@@ -140,7 +140,7 @@ Creating Ansible roles
 once you do ansible-galaxy init some folders gets created like {defaults,handlers,meta,tasks,tests,vars, Readme.md}
 
 so we would write the handlers in the folder handler, similarly variables should be in vars folder.
-All these respective folders will have files mail.yaml to define tasks, vars etc
+All these respective folders will have files main.yaml to define tasks, vars etc
 
 Now create a folder 
 Ansible roles always start with directory structure.
