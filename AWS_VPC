@@ -1,0 +1,201 @@
+AWS
+
+AWS Code Commit is a feature like - Like github
+AWS Codedeploy is code deployment tool
+AWS Code Pipeline
+
+
+VPC
+
+What is private and public IP
+Private Ip is a non internet facing IPs and Public IPs is Internet facing IPS.
+
+For example, There are two companies TCS and Wipro. they both will have different Public IPs but inside the public IPS they will divide the ips into different IPs
+
+               Wipro      Infosys
+Public IPs    10.0.0.2      10.0.0.3
+
+Private Ips   10.0.0.1      10.0.0.1
+              10.0.0.2      10.0.0.2
+              and so on
+
+ So now comes the concept of Subnet
+ To divide the network means dividing the Ips ( Public Ips into the private Ips we use subnets.)
+
+ so here if your requirement is to have suppose n number of Ips. then how will you choose your network
+
+ so we have seen the Ips range like 10.0.0.0/32 (here 32 is n)
+
+ the formala to have the number of ips is 2^(32 -n)
+
+now suppose you need 4 IPs then you choose the range of 10.0.0.0/30
+so now the formula is 2^(32-30) = 2^2 = 4
+so you will have 4 Ips like 10.0.0.0, 10.0.0.1, 10.0.0.2, 10.0.0.3
+
+Also there is one thing to note here, suppose the last Ip is 10.0.0.255, then the next ip cannot be 10.0.0.256, it will be 10.0.1.0 and so on..
+
+
+Now suppose there is a situation where we need 64 Ips for which there will be 16 public and 16 private Ip and remaining will be spare Ips.
+
+like below
+
+                                64 Ips required 10.0.0.0/26
+                    16 public Ips       16 Private Ips      remaining spair
+                    10.0.0.0/28         10.0.0.15/28
+
+
+Now observe the 16 Private Ips range it starts with 10.0.0.15 since we have 15 ips which are already allocated to 16 Public Ips so we cannot allocate the same Ips to the Private Ip hence the range will start from 10.0.0.15 
+
+
+CIDR - Classical Inter Domain range
+
+CIDR is a type of subnets
+
+VPC is virtual private cloud
+Basically it is used to design according to our security with our logic.
+
+**** Designing the VPC****
+
+Create a new VPC give name Intra-VPC and give 64 IPs to it
+
+Step 1
+Create a VPC
+
+so first login to AWS console and then navidate to the below path
+services --- network and security--- VPC
+then create new VPC
+give the name as Intra-VPC
+and then give the CIDR 10.0.0.0/26
+and then create
+For reference please see the screenshot attached.
+C:\Users\vmaloo\OneDrive - GVC Group\Desktop\New folder\AWS\VPC Desigining.png
+
+
+Step 2
+
+Create Internet gateway
+Now basically our requirement is to create a VPC and expose the public and the private subnets to the internet, to expose the public and private Ips to intenet we use Internet gateway.
+
+Now go to Internet gateway and click on create internet gateway.
+give the name as Infra-IGW
+and click on create
+
+Step 3
+
+Now attach the created internet gateway to the created VPC
+Select the internet gateway which you have created and click on action and select then select attach to VPC and then attach to Infra-VPC.
+
+Step 4
+Now we need to create the subnets, both public and private
+so go to subnets which is under Virtual Private cloud and click on create subnets
+then give the name as Infra-Public-Subnet and select the VPC as Infra-VPC and then selct the CIDR range as 10.0.0.0/28 (since we need only 16 IPS in Public cloud)
+Similarly create Infra-Private-Subnet and attach to Infra-VPC and then give the CIDR range as    10.0.0.16/28 (since we need 16 IPs here we selected 28 as per fornula and also since 16 IPs were already allocate to Public Ips so the range will start from 10.0.0.16/28)
+
+Step 5
+
+Create Route table 
+
+The next step is to create route table. We need to create two route table. Go to route table and click on create route table and give the name as Infra-Public-RT and select the VPC as Infra-VPC and click on create.
+Similarly create one more route table and give the name as Infra-Private-RT.
+
+Next step is we must associate these route table to Private and Public subnet accordingly.
+For this first select the Infra-Public-RT and click on action and then select edit subnet associations and then select the Infra-Public-subnet and then save it.
+Similarly we must do it for Infra-Private-RT.
+
+Step 6 
+
+Now the next step is to setup servers on our VPC that we have created.
+
+For this we need to go to ECS service and then click on the create an instance and then select the AMI for Linux system(micro system) and click on next.
+so over here you will see the Configration Instance tab.
+In this you need to select the Network as the VPC which you have created and also the Subnet as Infra-Public-Subnet.
+For reference go to this path:
+C:\Users\vmaloo\OneDrive - GVC Group\Desktop\New folder\AWS\Untitled
+
+So one point to note here:
+whenever you are selecting the Public subnet you need to enable the Auto assign Public IP
+and when you are selecting the private subnet you need to disable the Auto assign Public IP.
+
+Now launch the EC2 instance with these settings.
+
+Once you have launce the both the instance you will notice the Public server will have publlic IP4 value, but private server will not have public IP4 value, since private server wont have publicIp4. you will only see the private IP in private server.
+
+Also one thing to note here. By default in the public server you will not see the DNS host name. So for that you need to go to your VPC (i.e., Infra-VPC) and click on actions and select Edit DNS host name. and then select it as enable and save it. 
+Once you save this you will now able to see the DNS name in your Public server.
+
+Step 7
+Next step is to connect the server.
+so try to launch the public servers. you will observe that you are unable to connect to the server as it will give you network error.
+
+This is beause your internet is comming till upto VPC. but it is not going to the route tables.
+
+So you need to add the internet gateways to the route tables(public)
+
+So for this you need to go to the public route tables and the select Infra-Public-RT click on action and select "edit routes" and then you need to add one more coloum and in then you need to give the IP range as 0.0.0.0/0 (this means that you need internet to all the servers in your public servers.)
+And then in the target you need to select the internet gateway by selecting the VPC you have created.
+
+Now if you try to connect the Public servers you will be able to connect the servers and also you wll be able to access the internet in the public server.
+
+
+Step 8
+***
+Now you need your Private servers also to get the internet access. But since private servers do not have internet, you cannot directly associate private rout tables to the internet gateway.
+therefore we can use the public route table to access internet to the private server via NAT gateway.
+
+we need to attach the NAT gateway to the public Route table.
+
+Now go to NAT and create a NAT gateway and then select the subnet as Infra-Public-Subnet and then allocate elastic IP (it is a kind of static gateway), and then create it.
+
+Now you need to attach the Private server to the NAT gateway so as to access the internet.
+So go to the Infra-Private-RT and select actions and then select edit routes and then add the IP as 0.0.0.0/0 since you need the internet to all the private servers and then select the target as NAT gateway and then save it.
+
+Now you try to access the internet from the private servers. you shall be able to access the internet now,
+
+************
+VPC Peering 
+
+VPC peering means the communication between two private servers.
+Why we do VPC pairing is to connect between two VPCs.
+
+For reference senerio please refer below image
+C:\Users\vmaloo\OneDrive - GVC Group\Desktop\New folder\AWS\VPC peering.PNG
+
+we cannot do VPC network for the same network.
+
+so how you can do is you need the above set up as VPC A and you need to create another VPC set up in another region as VPC B, which has only Private servers and also do not have Internet gateway in this setup.
+
+
+If there is no internet gateway then all the servers are private.
+
+Now after creating the VPC A set up we need to create a VPC set up in the different account.
+
+Now we need to go to VPC A set up and then go to VPC peering and click on create peering and the fill the details as name , requrester as VPC A and then select the another account and give the details of the account id and the regoin where the VPC B is hosted.
+
+after that click on create preering.
+
+Now we need to go to VPC B and then we need to go to VC peering  and then you can see the status of the Peering connection as pending Acceptance. and then click on actions and accept the requrester
+
+Now the connection is established.
+
+Now the next step is we need the internet in the route table in VPC B so we need to go to reoute table in VPC B and then we need to add the IP as 10.200.1.0/24 and then select the target as peering conenction and select the VPC peering which has been created.
+
+**********
+END OF THE TOPIC 
+
+security group in AWS is the firewall
+
+if you are unable to connect to the Linux server what is the troubleshooting steps you will take.
+1. you should first check whether you have enable the ssh port 22 in the linux server. Which is used to connect via  ssh in your linux machines
+
+
+
+
+
+
+
+
+
+
+
+
+

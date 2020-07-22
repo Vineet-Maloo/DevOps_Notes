@@ -191,3 +191,35 @@ docker-machine create -d virtualbox master (master id the name of the manager)
 
 Use the below command
 docker-machine create master --virtualbox-no-vtx-check
+
+How will you share the voloums between the hostmachine and the containers
+docker run -it --name <any name you want to give for voloume> -v /opt/mvn:/opt/centos (path of hostmachine:path of containers)
+
+How you will share voloums between two containers
+docker run -it --voloume from <containerID from where you want to share or copy> 
+
+docker stat - will give you the details of the container and the memory utilisation of the container
+
+if you want to restrict the voloume memory you can do that by the following command
+docker run -itd  -m 300 M <containerID>
+
+to enter inside the container without running it again use
+docker attach <container ID>
+
+to see what are all the commands executed in a container or to see the activity of the conatiner or to see what are all the logs presrnt for a container user
+docker log <containerID>
+
+conmmand to extract a tar file -
+tar -xvf  <filename.tar.gz>
+
+suppose you want to run the container specific to one network bridge, how will you do that?
+docker container run -it <containerID> --net <network name>
+
+important command for docker networking
+
+docker network ls
+docker network create --subnet 10.1.1.0/16 --gateway 10.1.1.2 --ip-range=10.1.5.0/24 --driver=bridge --label= <labelName>
+docker network ls
+docker run -it --<network name> <container name>
+docker run -it --<network name> --ip 10.1.0.55 <container name> (if you want to run your container in specific IP)
+
