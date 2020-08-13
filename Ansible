@@ -1,3 +1,21 @@
+list of modules for interview
+1. line in file - it basically checks if the particular line is present in the file. If the line is not present, it will add te fie and if the line is present then it will not add
+example - lineinfile: path=/tmp/text.txt line="gaurav"
+
+2. script module - this is used to run the script in your worker nodes.
+example - script: testscript.sh Gaurav (Gaurav is a arguments)
+
+3. Service module - this module is used for starting or stop of any service like tomcat
+example:
+service:
+  name: apache
+  state: started
+
+4. user module: this module is used to create a user in target machine
+example:
+user: name="testuser" state=present password="encrypted command"
+The user will be seen in /etc/passwd folder and the password will be saved in /etc/shadow folder
+
 Ansible
 
 Create a common users Ansible and give him the sudo users.
@@ -128,7 +146,7 @@ Now select the roles written by others and see the readme file/examples and the 
 
 and then try using the same in your linux box.
 
-in linux box, before using the anible roles, you need to install ansible galaxy in your boxes.
+in linux box, before using the ansible roles, you need to install ansible galaxy in your boxes.
 example: ansible-galaxy install zaxos.tomcat-ansible-role (it will download it from ansible galaxy)
 
 Any ansible roles which you download will be stored at home/ansible/roles

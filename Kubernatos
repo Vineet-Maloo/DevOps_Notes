@@ -64,6 +64,7 @@ Scheduller
 responsible to find the best node to create your container.
 
 
+kubectl diff firstpod.yaml - this command is used to check if the yaml files has been changed and what changes are being made
 
 
 
