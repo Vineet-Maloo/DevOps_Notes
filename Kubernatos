@@ -194,7 +194,7 @@ A. there are 8 ways.
     - Monitor RBAC failure
     - Remove default service account permission
     - Filter egress to cloud API
-    - use podsecurity policyto have container restriction and protech the node.
+    - use podsecurity policy to have container restriction and protech the node.
     - keep kube at the latest version
 
 Q. How do you package your kubernetes application?
@@ -205,7 +205,7 @@ A. A config map ideally store the application config in a plain text.
    a secret stores a sensitive data like password in a encrypted format.
 
 Q. If a node is tainted, is there a way to schedule a pod to that node?
-A. When a node is tainted the pods dont get scheduled by default. TO schedule a pod to a tainted nodeapply tolerations to the pods
+A. When a node is tainted the pods dont get scheduled by default. TO schedule a pod to a tainted node apply tolerations to the pods
 
 Q. How to monitor a pod is always running?
 A. A liveness probe always check if an application is a pod is running. If this check fails the container gets started.

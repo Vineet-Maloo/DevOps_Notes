@@ -73,7 +73,7 @@ A docker container run -p 80:8080 (hostport:container port) nginx
 18. How to assign volumns to the container?
 A docker container run -d -v "/data" awesome/app bootstrap.sh (we can also use mount flag)
 
-19. wtrite docker pull, tag and push command?
+19. write docker pull, tag and push command?
 A $ docker push registry-host:5000/myadmin/rhel-httpd
 
 20. How will you login to the docker hub?
