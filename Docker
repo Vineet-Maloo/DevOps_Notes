@@ -54,7 +54,7 @@ NET
 MOUNT
 
 for your system docker is like a process
-But when you go inside your docket, it will again looks like a host process.
+But when you go inside your docker, it will again looks like a host process.
 
 Whenever you are installing docker a group gets created (like in windows we have a group for admins) which is called docker. And the members of the docker group will be able to speak to docker engine.
 
